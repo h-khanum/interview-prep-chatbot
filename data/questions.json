@@ -10,5 +10,19 @@
     "question": "What is supervised learning?",
     "keywords": ["labeled data", "input", "output", "training"],
     "model_answer": "Supervised learning is a type of machine learning where the model is trained using labeled input-output pairs."
+  },
+
+  {
+    "topic": "Data Structures",
+    "question": "What is a binary search tree?",
+    "keywords": ["binary search tree", "BST", "nodes", "left child", "right child"],
+    "model_answer": "A binary search tree is a data structure where each node has at most two children, with the left child containing values less than the parent node and the right child containing values greater than the parent node."
+  },
+  {
+    "topic": "Data Structures",
+    "question": "What is the difference between a stack and a queue?",
+    "keywords": ["stack", "queue", "LIFO", "FIFO", "data structure"],
+    "model_answer": "A stack is a data structure that follows Last In First Out (LIFO) principle, while a queue follows First In First Out (FIFO) principle."
   }
+  
 ]
