@@ -1,28 +1,148 @@
-[
-  {
-    "topic": "Machine Learning",
-    "question": "What is overfitting?",
-    "keywords": ["overfitting", "training data", "generalization", "noise"],
-    "model_answer": "Overfitting occurs when a model learns noise in the training data and performs poorly on unseen data."
-  },
-  {
-    "topic": "Machine Learning",
-    "question": "What is supervised learning?",
-    "keywords": ["labeled data", "input", "output", "training"],
-    "model_answer": "Supervised learning is a type of machine learning where the model is trained using labeled input-output pairs."
-  },
-
-  {
-    "topic": "Data Structures",
-    "question": "What is a binary search tree?",
-    "keywords": ["binary search tree", "BST", "nodes", "left child", "right child"],
-    "model_answer": "A binary search tree is a data structure where each node has at most two children, with the left child containing values less than the parent node and the right child containing values greater than the parent node."
-  },
-  {
-    "topic": "Data Structures",
-    "question": "What is the difference between a stack and a queue?",
-    "keywords": ["stack", "queue", "LIFO", "FIFO", "data structure"],
-    "model_answer": "A stack is a data structure that follows Last In First Out (LIFO) principle, while a queue follows First In First Out (FIFO) principle."
-  }
-  
-]
+{
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Python",
+      "difficulty": "Beginner",
+      "question": "What is the difference between a list and a tuple in Python?",
+      "ideal_answer": "Lists are mutable, meaning their elements can be changed after creation, while tuples are immutable. Lists use square brackets [] and tuples use parentheses (). Lists have more built-in methods like append() and remove(), while tuples have fewer methods. Tuples are generally faster and use less memory than lists.",
+      "key_points": ["mutability", "syntax", "performance", "use cases"]
+    },
+    {
+      "id": 2,
+      "topic": "Python",
+      "difficulty": "Intermediate",
+      "question": "Explain the difference between list comprehension and generator expressions in Python.",
+      "ideal_answer": "List comprehensions create the entire list in memory immediately using square brackets, while generator expressions produce items one by one (lazily) using parentheses. Generators are more memory-efficient for large datasets because they don't store all values at once. List comprehensions are faster for small datasets when you need all values immediately.",
+      "key_points": ["memory efficiency", "lazy evaluation", "syntax", "performance trade-offs"]
+    },
+    {
+      "id": 3,
+      "topic": "Python",
+      "difficulty": "Advanced",
+      "question": "How do decorators work in Python? Explain with an example.",
+      "ideal_answer": "Decorators are functions that modify the behavior of other functions or methods. They use the @decorator_name syntax and work by wrapping the original function. A decorator takes a function as input, adds functionality, and returns a modified version. Common uses include logging, timing, access control, and caching.",
+      "key_points": ["wrapper function", "closure", "@ syntax", "use cases"]
+    },
+    {
+      "id": 4,
+      "topic": "Machine Learning",
+      "difficulty": "Beginner",
+      "question": "What is the difference between supervised and unsupervised learning?",
+      "ideal_answer": "Supervised learning uses labeled data where the correct output is known during training. Examples include classification and regression. Unsupervised learning works with unlabeled data and finds patterns or structures automatically. Examples include clustering and dimensionality reduction. Supervised learning predicts specific outputs, while unsupervised learning discovers hidden patterns.",
+      "key_points": ["labeled vs unlabeled data", "prediction vs pattern discovery", "examples", "use cases"]
+    },
+    {
+      "id": 5,
+      "topic": "Machine Learning",
+      "difficulty": "Intermediate",
+      "question": "Explain the bias-variance tradeoff in machine learning.",
+      "ideal_answer": "Bias is the error from oversimplified assumptions, causing underfitting. Variance is the error from sensitivity to training data fluctuations, causing overfitting. High bias means the model is too simple and misses patterns. High variance means the model is too complex and learns noise. The goal is to find the sweet spot that minimizes total error by balancing both.",
+      "key_points": ["underfitting", "overfitting", "model complexity", "generalization"]
+    },
+    {
+      "id": 6,
+      "topic": "Machine Learning",
+      "difficulty": "Advanced",
+      "question": "How does the Random Forest algorithm work and what are its advantages?",
+      "ideal_answer": "Random Forest creates multiple decision trees using bootstrap sampling and random feature selection. Each tree votes on the prediction, and the majority wins (classification) or average is taken (regression). Advantages include handling non-linear relationships, reducing overfitting, measuring feature importance, and working well with missing data. It's robust and requires less hyperparameter tuning.",
+      "key_points": ["ensemble method", "bootstrap aggregating", "feature randomness", "voting mechanism"]
+    },
+    {
+      "id": 7,
+      "topic": "Deep Learning",
+      "difficulty": "Beginner",
+      "question": "What is a neural network activation function and why is it needed?",
+      "ideal_answer": "Activation functions introduce non-linearity into neural networks, allowing them to learn complex patterns. Without activation functions, neural networks would just be linear transformations. Common activation functions include ReLU, sigmoid, and tanh. They determine whether a neuron should be activated based on input, enabling the network to approximate non-linear functions.",
+      "key_points": ["non-linearity", "examples", "purpose", "neuron activation"]
+    },
+    {
+      "id": 8,
+      "topic": "Deep Learning",
+      "difficulty": "Intermediate",
+      "question": "Explain the vanishing gradient problem in deep neural networks.",
+      "ideal_answer": "The vanishing gradient problem occurs when gradients become extremely small during backpropagation in deep networks. This happens especially with sigmoid or tanh activations. Small gradients mean earlier layers learn very slowly or stop learning. Solutions include using ReLU activations, batch normalization, residual connections, and proper weight initialization.",
+      "key_points": ["backpropagation", "gradient magnitude", "deep networks", "solutions"]
+    },
+    {
+      "id": 9,
+      "topic": "Deep Learning",
+      "difficulty": "Advanced",
+      "question": "How does attention mechanism work in transformer models?",
+      "ideal_answer": "Attention mechanisms allow models to focus on relevant parts of input when making predictions. In transformers, self-attention computes relationships between all positions in a sequence. It uses Query, Key, and Value matrices to calculate attention scores, determining how much each element should attend to others. This enables parallel processing and captures long-range dependencies better than RNNs.",
+      "key_points": ["self-attention", "QKV matrices", "attention scores", "parallel processing"]
+    },
+    {
+      "id": 10,
+      "topic": "SQL",
+      "difficulty": "Beginner",
+      "question": "What is the difference between WHERE and HAVING clauses in SQL?",
+      "ideal_answer": "WHERE filters rows before grouping, while HAVING filters groups after aggregation. WHERE is used with individual rows and cannot use aggregate functions. HAVING is used with GROUP BY and can filter based on aggregate results like COUNT, SUM, or AVG. WHERE executes first in query processing, then GROUP BY, then HAVING.",
+      "key_points": ["filtering timing", "aggregation", "GROUP BY", "execution order"]
+    },
+    {
+      "id": 11,
+      "topic": "SQL",
+      "difficulty": "Intermediate",
+      "question": "Explain INNER JOIN vs LEFT JOIN with examples.",
+      "ideal_answer": "INNER JOIN returns only matching rows from both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table, with NULLs for non-matches. For example, if joining Customers and Orders, INNER JOIN shows only customers with orders, while LEFT JOIN shows all customers, including those without orders.",
+      "key_points": ["matching rows", "NULL values", "all left table rows", "use cases"]
+    },
+    {
+      "id": 12,
+      "topic": "SQL",
+      "difficulty": "Advanced",
+      "question": "What are window functions in SQL and when would you use them?",
+      "ideal_answer": "Window functions perform calculations across a set of rows related to the current row without collapsing them. Unlike GROUP BY, they retain individual rows. Examples include ROW_NUMBER(), RANK(), LAG(), LEAD(), and running totals. They're useful for rankings, moving averages, comparing consecutive rows, and running aggregations while preserving detail.",
+      "key_points": ["row preservation", "OVER clause", "ranking", "running calculations"]
+    },
+    {
+      "id": 13,
+      "topic": "Statistics",
+      "difficulty": "Beginner",
+      "question": "What is the difference between population and sample in statistics?",
+      "ideal_answer": "A population is the complete set of all items or individuals being studied. A sample is a subset of the population selected for analysis. We use samples because studying entire populations is often impractical or impossible. Sample statistics estimate population parameters. Good sampling methods ensure the sample represents the population accurately.",
+      "key_points": ["complete vs subset", "parameters vs statistics", "representation", "practical reasons"]
+    },
+    {
+      "id": 14,
+      "topic": "Statistics",
+      "difficulty": "Intermediate",
+      "question": "Explain the Central Limit Theorem and its importance.",
+      "ideal_answer": "The Central Limit Theorem states that the sampling distribution of the mean approaches a normal distribution as sample size increases, regardless of the population's distribution. This is crucial because it allows us to make inferences about population means using normal distribution properties. It justifies using z-tests and t-tests, and underlies much of inferential statistics.",
+      "key_points": ["sampling distribution", "normality", "sample size", "statistical inference"]
+    },
+    {
+      "id": 15,
+      "topic": "Statistics",
+      "difficulty": "Advanced",
+      "question": "What is the difference between Type I and Type II errors?",
+      "ideal_answer": "Type I error (false positive) occurs when we reject a true null hypothesis - claiming an effect exists when it doesn't. Type II error (false negative) occurs when we fail to reject a false null hypothesis - missing a real effect. Type I error probability is controlled by significance level (alpha). Type II error probability is beta, and 1-beta is statistical power. The tradeoff requires balancing these errors.",
+      "key_points": ["false positive", "false negative", "alpha", "beta", "power"]
+    },
+    {
+      "id": 16,
+      "topic": "A/B Testing",
+      "difficulty": "Beginner",
+      "question": "What is A/B testing and when is it used?",
+      "ideal_answer": "A/B testing is a controlled experiment comparing two versions (A and B) to determine which performs better. It's used to test changes in websites, apps, marketing campaigns, or product features. Users are randomly split between versions, and metrics like conversion rate or engagement are measured. Statistical tests determine if observed differences are significant or due to chance.",
+      "key_points": ["controlled experiment", "two versions", "randomization", "statistical significance"]
+    },
+    {
+      "id": 17,
+      "topic": "A/B Testing",
+      "difficulty": "Intermediate",
+      "question": "How do you determine the required sample size for an A/B test?",
+      "ideal_answer": "Sample size depends on baseline conversion rate, minimum detectable effect (MDE), significance level (alpha, usually 0.05), and statistical power (usually 0.8). Use power analysis formulas or online calculators. Smaller effect sizes require larger samples. Higher power needs more samples. The calculation ensures you can detect meaningful differences reliably while controlling error rates.",
+      "key_points": ["power analysis", "effect size", "significance level", "statistical power"]
+    },
+    {
+      "id": 18,
+      "topic": "A/B Testing",
+      "difficulty": "Advanced",
+      "question": "What is the multiple testing problem in A/B testing and how do you address it?",
+      "ideal_answer": "When running multiple tests or checking results repeatedly, the probability of false positives increases. If you test 20 hypotheses at alpha=0.05, you expect one false positive by chance. Solutions include Bonferroni correction (divide alpha by number of tests), False Discovery Rate control, or sequential testing methods. Pre-define stopping criteria and avoid peeking at results repeatedly.",
+      "key_points": ["inflated Type I error", "Bonferroni correction", "FDR", "sequential testing"]
+    }
+  ]
+}

@@ -1,372 +1,347 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DataPal - AI Study Buddy</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AI Interview Prep - DataPal</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
-            extend: {
-                colors: {
-                "primary": "#00f2fe", // Electric Cyan
-                "primary-dark": "#0ea5e9",
-                "bg-dark": "#0B0C15", // Deepest Navy/Black
-                "bg-card": "#151725", // Slightly Lighter
-                "accent-purple": "#bd34fe", // Vibrant Purple
-                "accent-pink": "#ff4b91", // Hot Pink
-                "accent-lime": "#d9f99d", // Lime
-                "accent-yellow": "#fde047", // Yellow
-                "glass": "rgba(30, 41, 59, 0.7)",
-                },
-                fontFamily: {
-                "display": ["Space Grotesk", "sans-serif"],
-                "body": ["Outfit", "sans-serif"],
-                },
-                borderRadius: {
-                    "DEFAULT": "1rem", 
-                    "lg": "1.5rem", 
-                    "xl": "2rem", 
-                    "2xl": "2.5rem",
-                    "3xl": "3rem",
-                    "full": "9999px"
-                },
-                boxShadow: {
-                    'glow': '0 0 20px rgba(0, 242, 254, 0.15)',
-                    'glow-purple': '0 0 20px rgba(189, 52, 254, 0.15)',
-                    'neon': '0 0 10px rgba(0, 242, 254, 0.5), 0 0 20px rgba(0, 242, 254, 0.3)',
+                extend: {
+                    colors: {
+                        "primary": "#00f2fe",
+                        "primary-dark": "#0ea5e9",
+                        "bg-dark": "#0B0C15",
+                        "bg-card": "#151725",
+                        "accent-purple": "#bd34fe",
+                        "accent-pink": "#ff4b91",
+                        "accent-lime": "#d9f99d",
+                        "accent-yellow": "#fde047",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                    }
                 }
-            },
-            },
+            }
         }
     </script>
-<style>::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: #334155;
-            border-radius: 20px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #475569;
-        }
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 20px; }
         .glass-panel {
             background: rgba(21, 23, 37, 0.7);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="bg-bg-dark text-slate-200 font-body overflow-hidden h-screen flex selection:bg-accent-pink selection:text-white">
-<aside class="w-20 lg:w-72 flex-shrink-0 flex flex-col justify-between border-r border-white/5 bg-bg-card transition-all z-20">
-<div class="p-6 flex items-center gap-4">
-<div class="relative size-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-accent-purple to-primary rounded-2xl text-white shadow-glow-purple">
-<span class="material-symbols-outlined text-3xl">smart_toy</span>
-<div class="absolute -top-1.5 -right-1.5 size-4 bg-accent-lime rounded-full border-4 border-bg-card animate-pulse"></div>
-</div>
-<div class="hidden lg:flex flex-col">
-<h1 class="text-2xl font-bold font-display tracking-tight text-white">DataPal</h1>
-<span class="text-[10px] text-primary font-bold uppercase tracking-[0.2em]">AI Study Buddy</span>
-</div>
-</div>
-<nav class="flex-1 px-4 py-6 flex flex-col gap-3 overflow-y-auto">
-<a class="flex items-center gap-4 px-4 py-3.5 bg-gradient-to-r from-primary/20 to-transparent border-l-4 border-primary text-white rounded-r-2xl transition-all group" href="#">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-primary">chat_bubble</span>
-<span class="hidden lg:block font-bold text-sm">Practice Chat</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-2xl transition-all group" href="#">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform group-hover:text-accent-purple">bar_chart</span>
-<span class="hidden lg:block font-medium text-sm">Progress</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-2xl transition-all group" href="#">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform group-hover:text-accent-pink">bookmark</span>
-<span class="hidden lg:block font-medium text-sm">Saved Questions</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-2xl transition-all group" href="#">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform group-hover:text-accent-yellow">menu_book</span>
-<span class="hidden lg:block font-medium text-sm">Resources</span>
-</a>
-</nav>
-<div class="p-6 border-t border-white/5">
-<div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 hover:bg-white/10 cursor-pointer transition-colors border border-white/5">
-<div class="size-10 rounded-full bg-cover bg-center border-2 border-accent-purple shadow-glow-purple" data-alt="User profile photo showing a smiling person" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7ADYmgbenqhDmYoZMqnUWaCLBxC1JPTWWIYoUNA-PeBJPWNX3dFw0v68cA0kVu3RKENeMd7sbCfNeUVJx_fjCydZCLdBFZ_-7vI55MY_PM0BqT9G9tLiI9tGIhRNxa6vdgMnk8HOtSvaT3oc2tMoQvzFcZEv2fwMEh9MVVgrGU8cAB1Q6UmKUqSXttmnky8dNSk_ZFQ_-jBGy_mh84jZEDaXWmROUqG9CzQcfTPb1ZaOeUBWmIgPo1EN8jGmLWJ_pu3KX6adsZ0c');"></div>
-<div class="hidden lg:flex flex-col">
-<span class="text-sm font-bold truncate text-white">Alex Johnson</span>
-<span class="text-xs text-slate-400 truncate">Data Science Student</span>
-</div>
-</div>
-</div>
-</aside>
-<main class="flex-1 flex flex-col min-w-0 bg-bg-dark relative bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent-purple/10 via-bg-dark to-bg-dark">
-<header class="flex-shrink-0 h-20 px-6 lg:px-8 flex items-center justify-between border-b border-white/5 glass-panel sticky top-0 z-10">
-<div class="flex items-center gap-4">
-<div class="size-10 rounded-xl bg-white/5 flex items-center justify-center text-accent-lime">
-<span class="material-symbols-outlined">code</span>
-</div>
-<div>
-<h2 class="text-xl font-bold font-display text-white">Python Interview Prep</h2>
-<div class="flex items-center gap-2">
-<span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-lime opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-accent-lime"></span>
-</span>
-<span class="text-xs font-medium text-slate-400">Online • Level: Intermediate</span>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<button class="size-11 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="size-11 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all">
-<span class="material-symbols-outlined">more_horiz</span>
-</button>
-</div>
-</header>
-<div class="flex-1 overflow-y-auto p-4 lg:p-8 space-y-8 scroll-smooth" id="chat-container">
-<div class="flex gap-4 max-w-3xl group">
-<div class="flex-shrink-0 self-end">
-<div class="size-12 rounded-2xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-glow transform group-hover:-translate-y-1 transition-transform duration-300">
-<span class="material-symbols-outlined text-2xl">smart_toy</span>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-4 mb-1">DataPal Bot</span>
-<div class="bg-bg-card p-6 rounded-3xl rounded-bl-sm shadow-lg border border-white/5 text-slate-200 leading-relaxed relative">
-<p class="text-base">Hey Alex! Ready to crush some <span class="text-accent-lime font-bold">Python</span> questions today? 🐍</p>
-<p class="mt-3 text-slate-400">I've picked out a medium-difficulty problem often asked at top tech companies. Want to give it a shot, or should we review some SQL concepts first?</p>
-</div>
-</div>
-</div>
-<div class="flex gap-4 max-w-3xl ml-auto justify-end group">
-<div class="flex flex-col gap-1 items-end">
-<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mr-4 mb-1">You</span>
-<div class="bg-gradient-to-br from-accent-purple to-indigo-600 text-white p-6 rounded-3xl rounded-br-sm shadow-glow-purple leading-relaxed">
-<p class="font-medium">Let's do Python! Bring it on. 🔥</p>
-</div>
-</div>
-<div class="flex-shrink-0 self-end">
-<div class="size-12 rounded-2xl border-2 border-bg-dark ring-2 ring-accent-purple bg-cover bg-center transform group-hover:-translate-y-1 transition-transform duration-300" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZ7JsyMKpULG3sRZRR3cF3mfPtoyE6GOmbeQjupkU0Enej2Pl9L8tZmaupnqYEyS-5gcO5n0TyMt2VJW-3KmQDC02YPeuNEMAaEMfaEzsv7aFzceveWk1hnFCR1rma1w57CezsHEgRBHIcZZvf3LWoAWjUNKSuck3MGsUGqvzLrDQUnUfrlyzpgFqrrW3pLv4tOXhInNya9B0zYHt1GdY13vlzsfXSi2cIs9IuBK6ZX42XSk2SZdaYFmDKqSKX9uvix5zvxFiQaw0');"></div>
-</div>
-</div>
-<div class="flex gap-4 max-w-3xl group">
-<div class="flex-shrink-0 self-end">
-<div class="size-12 rounded-2xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-glow transform group-hover:-translate-y-1 transition-transform duration-300">
-<span class="material-symbols-outlined text-2xl">smart_toy</span>
-</div>
-</div>
-<div class="flex flex-col gap-1 w-full">
-<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-4 mb-1">DataPal Bot</span>
-<div class="bg-bg-card p-6 rounded-3xl rounded-bl-sm shadow-lg border border-white/5 text-slate-200 leading-relaxed">
-<div class="flex items-center gap-2 mb-3">
-<span class="px-2 py-1 rounded bg-accent-yellow/10 text-accent-yellow text-xs font-bold border border-accent-yellow/20">QUESTION</span>
-<h3 class="font-bold text-lg text-white font-display">List Comprehension vs Generators</h3>
-</div>
-<p class="mb-5 text-slate-300">Can you explain the difference between a list comprehension and a generator expression in Python? When would you prefer one over the other?</p>
-<div class="bg-[#0f111a] p-5 rounded-2xl border border-white/5 font-mono text-sm text-slate-300 overflow-x-auto relative group/code">
-<div class="absolute top-3 right-3 flex gap-1.5">
-<div class="size-2.5 rounded-full bg-red-500"></div>
-<div class="size-2.5 rounded-full bg-yellow-500"></div>
-<div class="size-2.5 rounded-full bg-green-500"></div>
-</div>
-<code class="block mt-2">
-<span class="text-slate-500 italic"># Example A</span><br/>
-squares = [x**2 <span class="text-accent-pink">for</span> x <span class="text-accent-pink">in</span> range(1000)]<br/><br/>
-<span class="text-slate-500 italic"># Example B</span><br/>
-squares_gen = (x**2 <span class="text-accent-pink">for</span> x <span class="text-accent-pink">in</span> range(1000))
-                        </code>
-</div>
-<div class="flex gap-3 mt-4">
-<button class="text-xs font-bold text-slate-400 hover:text-primary transition-colors flex items-center gap-1 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg">
-<span class="material-symbols-outlined text-[16px]">lightbulb</span> Get a Hint
-                        </button>
-<button class="text-xs font-bold text-slate-400 hover:text-primary transition-colors flex items-center gap-1 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg">
-<span class="material-symbols-outlined text-[16px]">play_circle</span> Run Code
-                        </button>
-</div>
-</div>
-</div>
-</div>
-<div class="flex gap-4 max-w-3xl ml-auto justify-end group">
-<div class="flex flex-col gap-1 items-end">
-<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mr-4 mb-1">You</span>
-<div class="bg-gradient-to-br from-accent-purple to-indigo-600 text-white p-6 rounded-3xl rounded-br-sm shadow-glow-purple leading-relaxed">
-<p>List comprehensions create the entire list in memory immediately, while generators produce items one by one (lazily), which is much more memory efficient for large datasets!</p>
-</div>
-</div>
-<div class="flex-shrink-0 self-end">
-<div class="size-12 rounded-2xl border-2 border-bg-dark ring-2 ring-accent-purple bg-cover bg-center transform group-hover:-translate-y-1 transition-transform duration-300" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBh1bbOV0__OI5XeKgRy-QoY7tbUGCpMNfUHLPO85hKBWcWCJ2ahJmAdM1F_Y8RnG7wbKPBJh9USzDvNx8BxDK-G5G8KRWbBUOk631skc4PQRl-Xj2ckYjU7uou8arRRtuGeaVmWTSk_KXACs8qA3hyEEmDkPTDJEkQNAyE5tv2NkUIei8ZK6HGwtUSeMKj-h6M7lm0Pix6XmPEcX2wvQvenYxgAqgYAFwmkdlJoFHr73aZcg2pgCrNR0aSzY204Yi7DGcogFh70vk');"></div>
-</div>
-</div>
-<div class="flex gap-4 max-w-3xl group">
-<div class="flex-shrink-0 self-end">
-<div class="size-12 rounded-2xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-glow transform group-hover:-translate-y-1 transition-transform duration-300">
-<span class="material-symbols-outlined text-2xl">smart_toy</span>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-4 mb-1">DataPal Bot</span>
-<div class="bg-gradient-to-br from-bg-card to-[#064e3b] p-6 rounded-3xl rounded-bl-sm shadow-lg border border-accent-lime/20 text-slate-200 leading-relaxed relative overflow-hidden">
-<div class="absolute top-0 right-0 p-10 bg-accent-lime/10 blur-3xl rounded-full"></div>
-<div class="flex items-center gap-3 mb-3 relative z-10">
-<div class="size-8 rounded-full bg-accent-lime flex items-center justify-center shadow-[0_0_15px_rgba(190,242,100,0.5)]">
-<span class="material-symbols-outlined text-black font-bold text-lg">check</span>
-</div>
-<span class="font-bold font-display text-accent-lime text-lg">Spot on!</span>
-</div>
-<p class="relative z-10">Perfect explanation. You nailed the "memory efficiency" part. Want to try a coding challenge related to this?</p>
-</div>
-</div>
-</div>
-<div class="h-32"></div>
-</div>
-<div class="flex-shrink-0 p-4 lg:p-6 bg-gradient-to-t from-bg-dark via-bg-dark to-transparent pointer-events-none sticky bottom-0 z-20">
-<div class="max-w-4xl mx-auto pointer-events-auto flex flex-col gap-4">
-<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar px-1">
-<button class="whitespace-nowrap px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-primary hover:bg-primary hover:text-black hover:shadow-glow transition-all">
-                    ML Basics
-                </button>
-<button class="whitespace-nowrap px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-accent-pink hover:bg-accent-pink hover:text-white hover:shadow-glow transition-all">
-                    Deep Learning
-                </button>
-<button class="whitespace-nowrap px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-accent-purple hover:bg-accent-purple hover:text-white hover:shadow-glow-purple transition-all">
-                    SQL Queries
-                </button>
-<button class="whitespace-nowrap px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-accent-lime hover:bg-accent-lime hover:text-black hover:shadow-glow transition-all">
-                    Python Algo
-                </button>
-<button class="whitespace-nowrap px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-accent-yellow hover:bg-accent-yellow hover:text-black transition-all">
-                    Behavioral
-                </button>
-</div>
-<div class="relative group">
-<div class="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent-purple to-primary rounded-full opacity-30 blur group-focus-within:opacity-75 transition duration-500 animate-pulse"></div>
-<div class="relative flex items-center bg-bg-card border border-white/10 rounded-full shadow-2xl p-2 transition-all">
-<button class="size-12 rounded-full hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
-<span class="material-symbols-outlined">add_circle</span>
-</button>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-slate-500 px-4 font-medium text-base" placeholder="Ask me an interview question..." type="text"/>
-<button class="size-12 rounded-full hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors mr-1">
-<span class="material-symbols-outlined">mic</span>
-</button>
-<button class="px-6 h-12 rounded-full bg-primary hover:bg-primary-dark text-black font-bold text-sm shadow-glow transition-all flex items-center gap-2 hover:scale-105 active:scale-95">
-                        Send <span class="material-symbols-outlined text-[18px] font-bold">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</main>
-<aside class="hidden xl:flex w-80 flex-shrink-0 flex-col bg-bg-card border-l border-white/5 h-full overflow-y-auto">
-<div class="p-6 border-b border-white/5">
-<div class="bg-gradient-to-br from-white/5 to-transparent rounded-3xl p-6 border border-white/5 shadow-lg relative overflow-hidden group">
-<div class="absolute -right-6 -top-6 size-24 bg-accent-purple/20 rounded-full blur-xl group-hover:bg-accent-purple/30 transition-all"></div>
-<div class="flex justify-between items-start mb-4 relative z-10">
-<div>
-<h3 class="font-bold font-display text-white text-lg">Mock Interview</h3>
-<p class="text-xs text-slate-400 mt-1">Strict persona mode</p>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox" value=""/>
-<div class="w-12 h-7 bg-bg-dark border border-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary shadow-inner"></div>
-</label>
-</div>
-<div class="flex items-center gap-2 text-xs font-bold text-primary">
-<span class="material-symbols-outlined text-sm">schedule</span>
-<span>~45 min session</span>
-</div>
-</div>
-</div>
-<div class="p-6 pb-0 flex flex-col gap-5">
-<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest font-display">Your Progress</h3>
-<div class="flex gap-3">
-<div class="flex-1 bg-[#1a1d2d] border border-white/5 p-4 rounded-3xl flex flex-col items-center justify-center gap-2 shadow-inner group hover:border-white/10 transition-all">
-<span class="text-3xl font-bold text-white font-display group-hover:scale-110 transition-transform">3</span>
-<div class="flex items-center gap-1 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
-<span class="material-symbols-outlined text-sm">local_fire_department</span> Streak
-                </div>
-</div>
-<div class="flex-1 bg-[#1a1d2d] border border-white/5 p-4 rounded-3xl flex flex-col items-center justify-center gap-2 shadow-inner group hover:border-white/10 transition-all">
-<span class="text-3xl font-bold text-white font-display group-hover:scale-110 transition-transform">85%</span>
-<div class="flex items-center gap-1 text-[10px] font-bold text-primary uppercase tracking-wider">
-<span class="material-symbols-outlined text-sm">show_chart</span> Avg.
-                </div>
-</div>
-</div>
-</div>
-<div class="p-6 flex-1">
-<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 font-display">Skill Confidence</h3>
-<div class="flex flex-col gap-6">
-<div class="group">
-<div class="flex justify-between items-end mb-2">
-<span class="text-sm font-bold flex items-center gap-2 text-slate-300">
-<span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,242,254,0.8)]"></span> Python
-                    </span>
-<span class="text-xs font-bold text-slate-500 group-hover:text-primary transition-colors">80%</span>
-</div>
-<div class="h-2.5 w-full bg-bg-dark rounded-full overflow-hidden border border-white/5">
-<div class="h-full bg-gradient-to-r from-primary to-blue-500 rounded-full w-[80%] shadow-[0_0_10px_rgba(59,130,246,0.5)] relative">
-<div class="absolute inset-0 bg-white/20 animate-[pulse_2s_ease-in-out_infinite]"></div>
-</div>
-</div>
-</div>
-<div class="group">
-<div class="flex justify-between items-end mb-2">
-<span class="text-sm font-bold flex items-center gap-2 text-slate-300">
-<span class="size-2 rounded-full bg-accent-purple shadow-[0_0_8px_rgba(189,52,254,0.8)]"></span> SQL
-                    </span>
-<span class="text-xs font-bold text-slate-500 group-hover:text-accent-purple transition-colors">45%</span>
-</div>
-<div class="h-2.5 w-full bg-bg-dark rounded-full overflow-hidden border border-white/5">
-<div class="h-full bg-gradient-to-r from-accent-purple to-fuchsia-600 rounded-full w-[45%] shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
-</div>
-</div>
-<div class="group">
-<div class="flex justify-between items-end mb-2">
-<span class="text-sm font-bold flex items-center gap-2 text-slate-300">
-<span class="size-2 rounded-full bg-accent-pink shadow-[0_0_8px_rgba(255,75,145,0.8)]"></span> ML
-                    </span>
-<span class="text-xs font-bold text-slate-500 group-hover:text-accent-pink transition-colors">62%</span>
-</div>
-<div class="h-2.5 w-full bg-bg-dark rounded-full overflow-hidden border border-white/5">
-<div class="h-full bg-gradient-to-r from-accent-pink to-rose-600 rounded-full w-[62%] shadow-[0_0_10px_rgba(236,72,153,0.5)]"></div>
-</div>
-</div>
-</div>
-<div class="mt-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent p-6 rounded-3xl border border-primary/20 flex flex-col gap-4 text-center relative overflow-hidden">
-<div class="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-<div class="size-14 bg-bg-dark rounded-2xl mx-auto flex items-center justify-center shadow-glow border border-primary/30 relative z-10">
-<span class="material-symbols-outlined text-primary text-3xl">emoji_events</span>
-</div>
-<div class="relative z-10">
-<h4 class="font-bold text-sm text-white font-display">Daily Challenge</h4>
-<p class="text-xs text-slate-400 mt-1 leading-relaxed">Complete today's SQL optimization task to earn a <span class="text-primary font-bold">Gold Badge!</span></p>
-</div>
-<button class="w-full py-3 bg-bg-dark rounded-xl text-xs font-bold text-primary hover:bg-primary hover:text-black transition-all shadow-lg border border-primary/20 relative z-10">
-                Start Challenge
+
+<body class="bg-bg-dark text-slate-200 font-body overflow-hidden h-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-20 lg:w-72 flex-shrink-0 flex flex-col justify-between border-r border-white/5 bg-bg-card">
+
+        <div class="p-6 flex items-center gap-4">
+            <div class="relative size-12 flex items-center justify-center bg-gradient-to-br from-accent-purple to-primary rounded-2xl text-white shadow-glow-purple">
+                <span class="material-symbols-outlined text-3xl">smart_toy</span>
+                <div class="absolute -top-1.5 -right-1.5 size-4 bg-accent-lime rounded-full border-4 border-bg-card"></div>
+            </div>
+            <div class="hidden lg:flex flex-col">
+                <h1 class="text-2xl font-bold font-display text-white">DataPal</h1>
+                <span class="text-[10px] text-primary font-bold uppercase tracking-widest">AI Interview Prep</span>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 flex flex-col gap-3">
+            <button onclick="showSetup()" class="flex items-center gap-4 px-4 py-3.5 bg-gradient-to-r from-primary/20 to-transparent border-l-4 border-primary text-white rounded-r-2xl transition-all">
+                <span class="material-symbols-outlined text-primary">chat_bubble</span>
+                <span class="hidden lg:block font-bold text-sm">New Session</span>
             </button>
-</div>
-</div>
+            <button onclick="resetChat()" class="flex items-center gap-4 px-4 py-3.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-2xl transition-all">
+                <span class="material-symbols-outlined">refresh</span>
+                <span class="hidden lg:block font-medium text-sm">Reset</span>
+            </button>
+        </nav>
+        <div class="p-6 border-t border-white/5">
+            <div id="session-stats" class="text-xs text-slate-400 space-y-2 hidden">
+                <div>Questions: <span id="stat-questions">0</span></div>
+                <div>Avg Score: <span id="stat-score">0</span>%</div>
+            </div>
+        </div>
+    </aside>
 
-    <form method="POST">
-        <textarea name="answer" rows="5" cols="50" required></textarea><br><br>
-        <button type="submit">Submit Answer</button>
-    </form>
+    <!-- Main Content -->
+    <main class="flex-1 h-screen flex flex-col min-w-0 bg-bg-dark relative">
 
-    {% if feedback %}
-        <p><strong>{{ feedback }}</strong></p>
-    {% endif %}
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="flex-1 flex items-center justify-center p-8">
+            <div class="w-full max-w-2xl glass-panel rounded-3xl p-10 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-4xl font-bold font-display text-white mb-3">Ready to Practice?</h2>
+                    <p class="text-slate-400">Choose your preferences to start the interview session</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-white mb-3">Topic (Optional)</label>
+                        <select id="topic-select" class="w-full bg-bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-2 focus:ring-primary/20">
+                            <option value="">Any Topic</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-white mb-3">Difficulty (Optional)</label>
+                        <div class="flex gap-3">
+                            <button onclick="selectDifficulty('')" class="difficulty-btn flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Any</button>
+                            <button onclick="selectDifficulty('Beginner')" class="difficulty-btn flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Beginner</button>
+                            <button onclick="selectDifficulty('Intermediate')" class="difficulty-btn flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Intermediate</button>
+                            <button onclick="selectDifficulty('Advanced')" class="difficulty-btn flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Advanced</button>
+                        </div>
+                    </div>
+                    
+                    <button onclick="startSession()" class="w-full py-4 bg-primary hover:bg-primary-dark text-black font-bold rounded-full transition-all shadow-glow flex items-center justify-center gap-2">
+                        <span>Start Interview</span>
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-</aside>
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="hidden flex-1 flex flex-col h-full">
+            <header class="h-20 px-6 lg:px-8 flex items-center justify-between border-b border-white/5 glass-panel">
+                <div class="flex items-center gap-4">
+                    <div class="size-10 rounded-xl bg-white/5 flex items-center justify-center text-accent-lime">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <div>
+                        <h2 id="session-topic" class="text-xl font-bold font-display text-white">Interview Session</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-lime opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-lime"></span>
+                            </span>
+                            <span class="text-xs font-medium text-slate-400">Active Session</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-</body></html>
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 lg:p-8 space-y-6"></div>
+
+            <div class="p-4 lg:p-6 bg-gradient-to-t from-bg-dark via-bg-dark to-transparent">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex gap-3 mb-4">
+                        <button onclick="requestHint()" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-accent-lime hover:bg-accent-lime hover:text-black transition-all">💡 Hint</button>
+                        <button onclick="nextQuestion()" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-primary hover:bg-primary hover:text-black transition-all">Next Question</button>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="flex items-center bg-bg-card border border-white/10 rounded-full p-2">
+                            <input id="user-input" onkeypress="handleKeyPress(event)" class="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-slate-500 px-4 font-medium" placeholder="Type your answer..." type="text"/>
+                            <button onclick="sendMessage()" class="px-6 h-12 rounded-full bg-primary hover:bg-primary-dark text-black font-bold flex items-center gap-2">
+                                Send <span class="material-symbols-outlined text-[18px]">send</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let selectedDifficulty = '';
+        let messageCount = 0;
+
+        // Load topics on page load
+        window.onload = async () => {
+            try {
+                const res = await fetch('/api/topics');
+                const data = await res.json();
+                if (data.success) {
+                    const select = document.getElementById('topic-select');
+                    data.data.topics.forEach(topic => {
+                        const opt = document.createElement('option');
+                        opt.value = topic;
+                        opt.textContent = topic;
+                        select.appendChild(opt);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading topics:', error);
+            }
+        };
+
+        function selectDifficulty(level) {
+            selectedDifficulty = level;
+            document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-black', 'border-primary');
+                btn.classList.add('bg-white/5', 'text-slate-300', 'border-white/10');
+            });
+            event.target.classList.remove('bg-white/5', 'text-slate-300', 'border-white/10');
+            event.target.classList.add('bg-primary', 'text-black', 'border-primary');
+        }
+
+        async function startSession() {
+            const topic = document.getElementById('topic-select').value;
+            
+            try {
+                const res = await fetch('/api/start', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ topic: topic || null, difficulty: selectedDifficulty || null })
+                });
+                
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('setup-screen').classList.add('hidden');
+                    document.getElementById('chat-screen').classList.remove('hidden');
+                    
+                    if (topic) document.getElementById('session-topic').textContent = `${topic} Interview`;
+                    
+                    addBotMessage(data.data.welcome_message);
+                    addBotMessage(data.data.question.message);
+                    
+                    document.getElementById('session-stats').classList.remove('hidden');
+                }
+            } catch (error) {
+                alert('Error starting session. Please try again.');
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addUserMessage(message);
+            input.value = '';
+            
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ message })
+                });
+                
+                const data = await res.json();
+                if (data.success) {
+                    addBotMessage(data.data.message);
+                    updateStats();
+                }
+            } catch (error) {
+                addBotMessage('Sorry, I encountered an error. Please try again.');
+            }
+        }
+
+        async function requestHint() {
+            try {
+                const res = await fetch('/api/hint', {method: 'POST'});
+                const data = await res.json();
+                if (data.success) {
+                    addBotMessage(data.data.message);
+                }
+            } catch (error) {
+                console.error('Error requesting hint:', error);
+            }
+        }
+
+        async function nextQuestion() {
+            try {
+                const res = await fetch('/api/next', {method: 'POST'});
+                const data = await res.json();
+                if (data.success) {
+                    addBotMessage(data.data.message);
+                }
+            } catch (error) {
+                console.error('Error getting next question:', error);
+            }
+        }
+
+        async function resetChat() {
+            if (confirm('Are you sure you want to reset the session?')) {
+                try {
+                    await fetch('/api/reset', {method: 'POST'});
+                    location.reload();
+                } catch (error) {
+                    console.error('Error resetting chat:', error);
+                }
+            }
+        }
+
+        async function updateStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('stat-questions').textContent = data.data.questions_asked;
+                    document.getElementById('stat-score').textContent = data.data.average_score.toFixed(1);
+                }
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+
+        function showSetup() {
+            document.getElementById('chat-screen').classList.add('hidden');
+            document.getElementById('setup-screen').classList.remove('hidden');
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        function addUserMessage(text) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = 'flex gap-4 max-w-3xl ml-auto justify-end';
+            div.innerHTML = `
+                <div class="bg-gradient-to-br from-accent-purple to-indigo-600 text-white p-4 rounded-2xl rounded-br-sm max-w-xl">
+                    ${escapeHtml(text)}
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addBotMessage(text) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = 'flex gap-4 max-w-3xl';
+            div.innerHTML = `
+                <div class="flex-shrink-0">
+                    <div class="size-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                </div>
+                <div class="bg-bg-card p-4 rounded-2xl rounded-bl-sm border border-white/5 text-slate-200 max-w-2xl">
+                    ${formatMarkdown(text)}
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function formatMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>')
+                .replace(/• /g, '&bull; ');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
